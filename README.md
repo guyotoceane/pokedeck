@@ -1,12 +1,10 @@
-# Pokédeck
+# Pokedeck
 
-Jeu de carte Pokédeck dans le cadre du cours Java/UPMC
+School project (java/upmc) : Pokedeckcard game
 
-Instructions
-============
+## UML
 
-Le jeu se compile avec la commande `mvn compile`.
+* For view UML diagrams open pokedeck_uml.pdf file.
+* For update UML diagrams open pokedeck.dia (and install dia software if you haven't : [download link](https://sourceforge.net/projects/dia-installer/))
 
-Vous pouvez lancer une partie avec `mvn exec:java -Dexec.mainClass="upmc.pcg.Pokedeck"`
 
-L'énoncé et la date de rendu sont indiqués sur le [site du cours](http://hyc.io/teaching/java.html).
