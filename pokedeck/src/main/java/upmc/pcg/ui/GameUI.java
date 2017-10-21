@@ -15,14 +15,13 @@
 package upmc.pcg.ui;
 
 import java.util.*;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+import upmc.pcg.game.Deck;
 import upmc.pcg.game.Game;
 
 public class GameUI {
     private final Game game = new Game();
     private final Scanner console = new Scanner(System.in);
-    private ArrayList<Deck> names_decks = new ArrayList<>();;
+    private ArrayList<Deck> names_decks = new ArrayList<>();
 
     public void start() {
         print_welcome_msg();
