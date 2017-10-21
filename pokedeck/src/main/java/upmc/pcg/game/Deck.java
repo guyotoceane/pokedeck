@@ -14,11 +14,10 @@ import java.util.List;
  */
 public class Deck {
     private List deck = new LinkedList();
+    private String name_deck;
     
-    
-    public Deck() {
-        
-
+    public Deck(String name_deck) {
+        this.name_deck=name_deck;
     }
     
     public void Search() {
@@ -26,7 +25,9 @@ public class Deck {
     }
     
     
-    
+    public String ViewNameDeck(){
+        return this.name_deck;
+    }
     
     public void ViewDeck(){
         for(int i = 0; i < deck.size(); i++){
