@@ -23,8 +23,7 @@ public class Game {
     //....
   }
   public void play() {
-     PokemonType type = new PokemonType();
-      type.view_type_color("Grass");
-     System.out.println(PokemonType.color + " " + PokemonType.pokemon_type);
+     Card type = new Card(1);
+     System.out.println(type.pokemon("Flaeron", 100, "Fire"));
   }
 }
