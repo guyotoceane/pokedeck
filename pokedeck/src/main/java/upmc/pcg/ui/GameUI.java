@@ -15,8 +15,7 @@
 package upmc.pcg.ui;
 
 import java.util.*;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+import upmc.pcg.game.Deck;
 import upmc.pcg.game.Game;
 
 public class GameUI {
@@ -46,12 +45,12 @@ public class GameUI {
     
     
 /*Menu*/
-    private void PrintMenu(){
+    public void PrintMenu(){
         System.out.println("(1) Create a deck \n(2) View names of all decks \n(3) View a deck \n(4) Leave ");
         ChoiceUserMenu();
     }
     
-    private void ChoiceUserMenu(){
+    public void ChoiceUserMenu(){
         String choice_user = console.nextLine();
         
         if(choice_user.equals("1")){
@@ -99,8 +98,15 @@ public class GameUI {
         System.out.println("What deck you want to see? ");
         String name_deck = console.nextLine();
         
+        for(int i=0; i<names_decks.size(); i++){
+            if(names_decks.get(i).ViewNameDeck().equals(name_deck)){
+                DeckUI deck_ui = new DeckUI();
+                deck_ui.PrintDeckMenu();
+            }
+        }
+        
+        
         //Menu deck 
         //Search Card ...
     }
-    
 }
