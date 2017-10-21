@@ -23,6 +23,8 @@ public class Game {
     //....
   }
   public void play() {
-    //...
+     PokemonType type = new PokemonType();
+      type.view_type_color("Grass");
+     System.out.println(PokemonType.color + " " + PokemonType.pokemon_type);
   }
 }

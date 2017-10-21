@@ -1,13 +1,13 @@
 package upmc.pcg.game;
 
 public class Color {
-    private String color;
+    private int color;
 
-    public Color(String color){
+    public Color(int color){
         this.color = color;
     }
 
     public String toString() {
-        return this.color;
+        return "\033[" + this.color + "m";
     }
 }
