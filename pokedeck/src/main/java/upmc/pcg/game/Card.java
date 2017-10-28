@@ -6,19 +6,19 @@ public class Card {
     private PokemonType pokemon_type;
     private String card_type;
 
-    public Card(int type) {
-        switch (type) {
-            case 1:
-                this.card_type = "pokemon";
-                break;
-            case 2:
-                this.card_type = "energy";
-                break;
-            default:
-                this.card_type = "energy";
-                break;
-        }
-    }
+//    public Card(int type) {
+//        switch (type) {
+//            case 1:
+//                this.card_type = "pokemon";
+//                break;
+//            case 2:
+//                this.card_type = "energy";
+//                break;
+//            default:
+//                this.card_type = "pokemon";
+//                break;
+//        }
+//    }
 
     public String pokemon(String pokemon_name, int hp, String type){
         this.pokemon_type = new PokemonType();

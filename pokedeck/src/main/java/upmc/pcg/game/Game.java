@@ -23,7 +23,7 @@ public class Game {
     //....
   }
   public void play() {
-     Card type = new Card(1);
-     System.out.println(type.pokemon("Flaeron", 100, "Fire"));
+//     Card type = new Card();
+//     System.out.println(type.pokemon("Flaeron", 100, "Fire"));
   }
 }

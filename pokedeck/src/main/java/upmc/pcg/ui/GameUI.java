@@ -15,13 +15,12 @@
 package upmc.pcg.ui;
 
 import java.util.*;
-import upmc.pcg.game.Deck;
-import upmc.pcg.game.Game;
+import upmc.pcg.game.*;
 
 public class GameUI {
     private final Game game = new Game();
     private final Scanner console = new Scanner(System.in);
-    private ArrayList<Deck> names_decks = new ArrayList<>();;
+    private ArrayList<Deck> names_decks = new ArrayList<>();
 
     public void start() {
         print_welcome_msg();
@@ -47,24 +46,37 @@ public class GameUI {
 /*Menu*/
     public void PrintMenu(){
         System.out.println("(1) Create a deck \n(2) View names of all decks \n(3) View a deck \n(4) Leave ");
+        //provisoire
+        System.out.println("Menu provisoire pour les tests des cartes");
+        System.out.println("(5) Add a card \n(6) Suppr a card \n");
         ChoiceUserMenu();
     }
     
     public void ChoiceUserMenu(){
         String choice_user = console.nextLine();
-        
-        if(choice_user.equals("1")){
-            CreateDeck();
-        }else if(choice_user.equals("2")){
-            ViewAllNamesDecks();
-        }else if(choice_user.equals("3")){
-            ViewDeck();
-        }
-        else if(choice_user.equals("4")){
-            System.exit(0);
-        }else{
-            System.out.println("Bad Selection ");
-            ChoiceUserMenu();
+        CardUI card = new CardUI();
+
+        switch (choice_user){
+            case "1" :
+                CreateDeck();
+                break;
+            case "2" :
+                ViewAllNamesDecks();
+                break;
+            case "3" :
+                ViewDeck();
+                break;
+            case "4" :
+                System.exit(0);
+                break;
+            case "5" :
+                card.add_card();
+                break;
+            default:
+                System.out.println("Bad Selection ");
+                ChoiceUserMenu();
+                break;
+
         }
     }
     
@@ -109,4 +121,6 @@ public class GameUI {
         //Menu deck 
         //Search Card ...
     }
+
+
 }
