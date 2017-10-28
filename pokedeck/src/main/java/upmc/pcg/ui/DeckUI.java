@@ -15,7 +15,7 @@ public class DeckUI {
     private final Scanner console = new Scanner(System.in);
         
     public void PrintDeckMenu(){
-        System.out.println("    (1)  \n    (4) Back ");
+        System.out.println("    (1) Add Card \n    (2) UpdateCard \n    (3) Remove Card   \n    (4) Back ");
         ChoiceUserDeckMenu();
     }
     
@@ -23,7 +23,7 @@ public class DeckUI {
         String choice_user = console.nextLine();
         
         if(choice_user.equals("1")){
-
+            
         }else if(choice_user.equals("2")){
 
         }else if(choice_user.equals("3")){
