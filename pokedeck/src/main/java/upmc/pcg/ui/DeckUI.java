@@ -15,7 +15,7 @@ public class DeckUI {
     private final Scanner console = new Scanner(System.in);
         
     public void PrintDeckMenu(){
-        System.out.println("    (1) Add Card \n    (2) UpdateCard \n    (3) Remove Card   \n    (4) Back ");
+        System.out.println("    (1) Add Card \n    (2) Update Card \n    (3) Remove Card \n    (4) View All card \n    (5) View a Card  \n    (6) Back ");
         ChoiceUserDeckMenu();
     }
     
@@ -23,13 +23,17 @@ public class DeckUI {
         String choice_user = console.nextLine();
         
         if(choice_user.equals("1")){
-            
+            CardUI card = new CardUI();
+            card.add_card();
         }else if(choice_user.equals("2")){
 
         }else if(choice_user.equals("3")){
 
-        }
-        else if(choice_user.equals("4")){
+        }else if(choice_user.equals("4")){
+
+        }else if(choice_user.equals("5")){
+
+        }else if(choice_user.equals("6")){
             GameUI game_ui = new GameUI();
             game_ui.PrintMenu();
         }else{

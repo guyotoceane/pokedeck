@@ -46,6 +46,8 @@ public class GameUI {
 /*Menu*/
     public void PrintMenu(){
         System.out.println("(1) Create a deck \n(2) View names of all decks \n(3) View a deck \n(4) Leave ");
+        
+        
         //provisoire
         System.out.println("Menu provisoire pour les tests des cartes");
         System.out.println("(5) Add a card \n(6) Suppr a card \n");
