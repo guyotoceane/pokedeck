@@ -4,26 +4,20 @@ public class Card {
     private String card_name;
     private int hp;
     private PokemonType pokemon_type;
-    private String card_type;
+    private String type;
 
-//    public Card(int type) {
-//        switch (type) {
-//            case 1:
-//                this.card_type = "pokemon";
-//                break;
-//            case 2:
-//                this.card_type = "energy";
-//                break;
-//            default:
-//                this.card_type = "pokemon";
-//                break;
-//        }
-//    }
+    public Card(String pokemon_name, int hp, String type) {
+        this.card_name = pokemon_name;
+        this.hp = hp;
+        this.type = type;
 
-    public String pokemon(String pokemon_name, int hp, String type){
+
+    }
+
+    public String pokemon(){
         this.pokemon_type = new PokemonType();
-        this.pokemon_type.view_type_color(type);
-        return PokemonType.color + "Pokemon Name : "+pokemon_name + "\nhp : " + hp + "\nPokemon Type : " + PokemonType.pokemon_type;
+        this.pokemon_type.view_type_color(this.type);
+        return PokemonType.color + "Pokemon Name : "+this.card_name + "\nhp : " + this.hp + "\nPokemon Type : " + PokemonType.pokemon_type;
 
     }
 }

@@ -8,7 +8,6 @@ public class CardUI {
     private String card_energy;
     private String pokemon_card_name;
     private int pokemon_card_hp;
-    private Card card = new Card();
 
     public void add_card() {
         System.out.println("**Add a new Card**");
@@ -36,8 +35,10 @@ public class CardUI {
         pokemon_card_name = console.nextLine();
         System.out.println("Pokemon hp :");
         pokemon_card_hp = Integer.parseInt(console.nextLine());
-        System.out.println(card.pokemon(pokemon_card_name, pokemon_card_hp, card_energy));
+        System.out.println();
         //TODO Jérome Add card in the deck
+        Card card = new Card(pokemon_card_name, pokemon_card_hp, card_energy);
+        System.out.println(card.pokemon());
     }
 
     private void energy_card() {
