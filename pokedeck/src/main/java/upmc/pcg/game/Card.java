@@ -18,7 +18,6 @@ public class Card {
     public JSONObject pokemon(){
         this.pokemon_type = new PokemonType();
         this.pokemon_type.view_type_color(this.type);
-//        return PokemonType.color + "Pokemon Name : "+this.card_name + "\nhp : " + this.hp + "\nPokemon Type : " + PokemonType.pokemon_type;
         pokemon_card();
         return this.card;
     }

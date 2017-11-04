@@ -47,7 +47,7 @@ public class DeckUI {
 
             PrintDeckMenu(this.indiv_deck);
         }else if(choice_user.equals("2")){
-
+            cardUI.update_card(this.indiv_deck);
         }else if(choice_user.equals("3")){
            this.indiv_deck.remove(cardUI.select_card());
             PrintDeckMenu(this.indiv_deck);
@@ -77,7 +77,7 @@ public class DeckUI {
             String search = console.nextLine();
             JSONObject card_name = (JSONObject) this.indiv_deck.get(search);
 
-            if(card_name != null){
+            if(this.indiv_deck.get(search) != null){
                 System.out.println("-------------------------");
                 if(search.equals("Water") || search.equals("Fighting") || search.equals("Psychic") || search.equals("Lightning") || search.equals("Fire") || search.equals("Grass")){
                     System.out.println("Energy type : " + search);

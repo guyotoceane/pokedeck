@@ -32,6 +32,64 @@ public class CardUI {
         return console.nextLine();
     }
 
+    public void update_card(JSONObject deck){
+        System.out.println("**Update a Pokemon Card**");
+        String card_name = select_card();
+        if(card_name.equals("Water") || card_name.equals("Fighting") || card_name.equals("Psychic") || card_name.equals("Lightning") || card_name.equals("Fire") || card_name.equals("Grass")){
+            System.out.println("Error ! You have choose an Energy Card. It's not possible to update this card ... ");
+            update_card(deck);
+        }
+        else {
+            JSONObject card = (JSONObject) deck.get(card_name);
+            if(card!= null){
+                System.out.println(view_card_pokemon(card));
+                update_option(card, deck);
+
+
+            } else{
+                System.out.println("Error ! You don't have this Pokemon card in the deck ...  ");
+                update_card(deck);
+            }
+
+        }
+    }
+
+    public void update_option(JSONObject card, JSONObject deck){
+        System.out.println("(1)Change name\n(2)Change hp \n(3)Change Pokemon Type\n(4)Finish update");
+        switch (console.nextLine()){
+            case "1" :
+                System.out.println("New name :");
+                String name = console.nextLine();
+                card.remove("name");
+                card.put("name", name);
+                update_option(card, deck);
+                break;
+            case "2" :
+                System.out.println("New hp :");
+                String hp = console.nextLine();
+                card.remove("hp");
+                card.put("hp", hp);
+                update_option(card, deck);
+                break;
+            case "3" :
+                PokemonType pokemon_type = new PokemonType();
+                energy_type();
+                pokemon_type.view_type_color(this.card_energy);
+                card.remove("pokemon_type");
+                card.put("pokemon_type", this.card_energy);
+                card.remove("color");
+                card.put("color",PokemonType.color);
+                update_option(card, deck);
+                break;
+            case "4":
+                DeckUI deckUi = new DeckUI();
+                deckUi.PrintDeckMenu(deck);
+            default:
+                System.out.println("Bad Selection !");
+                update_option(card, deck);
+        }
+    }
+
     public String view_card_energy(int card) {
         return "You have "+card+" energy \n";
     }
