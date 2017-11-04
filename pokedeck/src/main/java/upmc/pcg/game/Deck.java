@@ -23,10 +23,6 @@ public class Deck {
     public Deck(String name_deck) {
         this.name_deck=name_deck;
     }
-    
-    public void Search() {
-        
-    }
 
     public void new_deck(){
 
@@ -50,7 +46,4 @@ public class Deck {
         }
     }
 
-    public void add_card(){
-
-    }
 }
