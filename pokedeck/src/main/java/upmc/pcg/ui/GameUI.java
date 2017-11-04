@@ -52,11 +52,6 @@ public class GameUI {
 /*Menu*/
     public void PrintMenu(){
         System.out.println("(1) Create a deck \n(2) View names of all decks \n(3) View a deck \n(4) Leave ");
-
-        
-        //provisoire
-        System.out.println("Menu provisoire pour les tests des cartes");
-        System.out.println("(5) Add a card \n(6) Suppr a card \n");
         ChoiceUserMenu();
     }
     
@@ -82,7 +77,7 @@ public class GameUI {
                 break;
             default:
                 System.out.println("Bad Selection ");
-                ChoiceUserMenu();
+                PrintMenu();
                 break;
 
         }
@@ -114,18 +109,20 @@ public class GameUI {
             }
 
         }
-
-
-
         PrintMenu();
     }
     
     public void ViewDeck(){
         System.out.println("What deck you want to see? ");
         JSONObject name_deck = (JSONObject) list_decks.get(console.nextLine());
+        if(name_deck != null){
+            DeckUI deck_ui = new DeckUI();
+            deck_ui.PrintDeckMenu(name_deck);
+        } else{
+            System.out.println("Deck doesn't exist ...");
+            PrintMenu();
+        }
 
-        DeckUI deck_ui = new DeckUI();
-        deck_ui.PrintDeckMenu(name_deck);
 
         //Menu deck 
         //Search Card ...

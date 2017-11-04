@@ -18,7 +18,8 @@ public class Deck {
     private List deck = new LinkedList();
     private String name_deck;
     private JSONObject cards = new JSONObject();
-    
+    private JSONObject nbEnergy = new JSONObject();
+
     public Deck(String name_deck) {
         this.name_deck=name_deck;
     }
@@ -28,8 +29,15 @@ public class Deck {
     }
 
     public void new_deck(){
+
         GameUI.list_decks.put(this.name_deck, cards);
-        cards.put("name", this.name_deck);
+        nbEnergy.put("number", 0);
+        cards.put("Grass", nbEnergy);
+        cards.put("Fire", nbEnergy);
+        cards.put("Water", nbEnergy);
+        cards.put("Lightning", nbEnergy);
+        cards.put("Psychic", nbEnergy);
+        cards.put("Fighting", nbEnergy);
     }
     
     

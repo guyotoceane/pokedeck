@@ -33,6 +33,14 @@ public class CardUI {
         return console.nextLine();
     }
 
+    public String view_card_energy(JSONObject card) {
+        return "You have "+card.get("number")+" energy \n";
+    }
+
+    public String view_card_pokemon(JSONObject card) {
+        return "\033[" +card.get("color") + "m" + "Pokemon Name : "+card.get("name") + "\nhp : " + card.get("hp") + "\nPokemon Type : " + card.get("pokemon_type") + "\033[00m";
+    }
+
     private JSONObject pokemon_card() {
         energy_type();
         System.out.println("Pokemon name :");

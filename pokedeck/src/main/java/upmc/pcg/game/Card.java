@@ -26,7 +26,8 @@ public class Card {
     public void pokemon_card() {
         card.put("name", this.card_name);
         card.put("hp", this.hp);
-        card.put("Pokemon Type", PokemonType.pokemon_type);
+        card.put("pokemon_type", PokemonType.pokemon_type);
         card.put("color", PokemonType.color);
     }
+
 }
