@@ -31,7 +31,20 @@ public class DeckUI {
         
         if(choice_user.equals("1")){
             JSONObject create_card = cardUI.create_card();
-            this.indiv_deck.put(cardUI.pokemon_card_name, create_card);
+            if(cardUI.type.equals("Energy Card")){
+                String energy = (String) create_card.get("energy");
+                int card_energy = (int) this.indiv_deck.get(energy);
+                System.out.println(this.indiv_deck.get(energy));
+                this.indiv_deck.remove(energy);
+                this.indiv_deck.put(energy, card_energy+1);
+
+//                System.out.println(this.indiv_deck);
+
+
+            } else{
+                this.indiv_deck.put(cardUI.pokemon_card_name, create_card);
+            }
+
             PrintDeckMenu(this.indiv_deck);
         }else if(choice_user.equals("2")){
 
@@ -43,12 +56,14 @@ public class DeckUI {
             for (Object keyObject : this.indiv_deck.keySet())
             {
                 String key = (String) keyObject;
-                JSONObject deck = (JSONObject)this.indiv_deck.get(key);
+
                 if(key.equals("Water") || key.equals("Fighting") || key.equals("Psychic") || key.equals("Lightning") || key.equals("Fire") || key.equals("Grass")){
+                    int deck = (int)this.indiv_deck.get(key);
                     System.out.println("Energy type : " + key);
                     System.out.print(cardUI.view_card_energy(deck));
                 }
                 else {
+                    JSONObject deck = (JSONObject) this.indiv_deck.get(key);
                     System.out.println(cardUI.view_card_pokemon(deck));
                 }
                 System.out.println("-------------------------");
@@ -66,7 +81,7 @@ public class DeckUI {
                 System.out.println("-------------------------");
                 if(search.equals("Water") || search.equals("Fighting") || search.equals("Psychic") || search.equals("Lightning") || search.equals("Fire") || search.equals("Grass")){
                     System.out.println("Energy type : " + search);
-                    System.out.print(cardUI.view_card_energy(card_name));
+                    System.out.print(cardUI.view_card_energy( (int) this.indiv_deck.get(search)));
                 }
                 else {
                     System.out.println(cardUI.view_card_pokemon(card_name));

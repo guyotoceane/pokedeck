@@ -5,7 +5,7 @@ import java.util.*;
 
 public class CardUI {
     private Scanner console = new Scanner(System.in);
-    private String type;
+    public String type;
     private String card_energy;
     public String pokemon_card_name;
     private int pokemon_card_hp;
@@ -19,13 +19,12 @@ public class CardUI {
                 return pokemon_card();
             case "2":
                 type = "Energy Card";
-                energy_card();
-                break;
+                return energy_card();
+
             default:
                 System.out.println("Bad Selection");
                 return create_card();
         }
-        return null;
     }
 
     public String select_card(){
@@ -33,8 +32,8 @@ public class CardUI {
         return console.nextLine();
     }
 
-    public String view_card_energy(JSONObject card) {
-        return "You have "+card.get("number")+" energy \n";
+    public String view_card_energy(int card) {
+        return "You have "+card+" energy \n";
     }
 
     public String view_card_pokemon(JSONObject card) {
@@ -52,9 +51,11 @@ public class CardUI {
         return card.pokemon();
     }
 
-    private void energy_card() {
+    private JSONObject energy_card() {
+        JSONObject energy = new JSONObject();
         energy_type();
-        //TODO Jérome Increment +1 with this type of card in the deck
+        energy.put("energy", card_energy);
+        return energy;
     }
 
     private void energy_type(){

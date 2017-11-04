@@ -31,13 +31,12 @@ public class Deck {
     public void new_deck(){
 
         GameUI.list_decks.put(this.name_deck, cards);
-        nbEnergy.put("number", 0);
-        cards.put("Grass", nbEnergy);
-        cards.put("Fire", nbEnergy);
-        cards.put("Water", nbEnergy);
-        cards.put("Lightning", nbEnergy);
-        cards.put("Psychic", nbEnergy);
-        cards.put("Fighting", nbEnergy);
+        cards.put("Grass", 0);
+        cards.put("Fire", 0);
+        cards.put("Water", 0);
+        cards.put("Lightning", 0);
+        cards.put("Psychic", 0);
+        cards.put("Fighting", 0);
     }
     
     
