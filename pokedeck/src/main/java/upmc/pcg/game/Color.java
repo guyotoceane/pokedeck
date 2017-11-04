@@ -7,7 +7,10 @@ public class Color {
         this.color = color;
     }
 
+//    public String toString() {
+//        return "\033[" + this.color;
+//    }
     public String toString() {
-        return "\033[" + this.color + "m";
+        return ""+this.color+"";
     }
 }

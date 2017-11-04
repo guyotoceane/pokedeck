@@ -17,10 +17,16 @@ package upmc.pcg.ui;
 import java.util.*;
 import upmc.pcg.game.*;
 
+import org.json.simple.*;
+
+
+import java.util.ArrayList;
+
+
 public class GameUI {
     private final Game game = new Game();
     private final Scanner console = new Scanner(System.in);
-    private ArrayList<Deck> names_decks = new ArrayList<>();
+    public static JSONObject list_decks = new JSONObject();
 
     public void start() {
         print_welcome_msg();
@@ -46,7 +52,7 @@ public class GameUI {
 /*Menu*/
     public void PrintMenu(){
         System.out.println("(1) Create a deck \n(2) View names of all decks \n(3) View a deck \n(4) Leave ");
-        
+
         
         //provisoire
         System.out.println("Menu provisoire pour les tests des cartes");
@@ -72,7 +78,7 @@ public class GameUI {
                 System.exit(0);
                 break;
             case "5" :
-                card.add_card();
+                card.create_card();
                 break;
             default:
                 System.out.println("Bad Selection ");
@@ -87,39 +93,40 @@ public class GameUI {
     public void CreateDeck(){
         System.out.println("Deck's name ? ");     
         String name_deck = console.nextLine();
-        
-        this.names_decks.add(new Deck(name_deck));  //create a deck in names_decks 
-        System.out.println(names_decks.get(0).ViewNameDeck() + " was created");
+        Deck deck = new Deck(name_deck);
+        deck.new_deck();
+//        this.list_decks.put("deck_name", deck);  //create a deck in names_decks
+        System.out.println(deck.ViewNameDeck() + " was created");
         PrintMenu();
     }
     
     public void ViewAllNamesDecks(){
 
-        if(names_decks.isEmpty()){
+        if(list_decks.isEmpty()){
             System.out.println("0 deck create");
         }else{
-            System.out.println("List of names of all decks : ");
-            for(int i=0; i<names_decks.size(); i++){
-                System.out.print(" " + names_decks.get(i).ViewNameDeck() +",");
+            System.out.println("List of names of all list_decks : ");
+
+            for (Object keyObject : list_decks.keySet())
+            {
+                String key = (String)keyObject;
+                System.out.print("* " + key +"\n");
             }
-            System.out.println(" ");
+
         }
-        
+
+
+
         PrintMenu();
     }
     
     public void ViewDeck(){
         System.out.println("What deck you want to see? ");
-        String name_deck = console.nextLine();
-        
-        for(int i=0; i<names_decks.size(); i++){
-            if(names_decks.get(i).ViewNameDeck().equals(name_deck)){
-                DeckUI deck_ui = new DeckUI();
-                deck_ui.PrintDeckMenu();
-            }
-        }
-        
-        
+        JSONObject name_deck = (JSONObject) list_decks.get(console.nextLine());
+
+        DeckUI deck_ui = new DeckUI();
+        deck_ui.PrintDeckMenu(name_deck);
+
         //Menu deck 
         //Search Card ...
     }

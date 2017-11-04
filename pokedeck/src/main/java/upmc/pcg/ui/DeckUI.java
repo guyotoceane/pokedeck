@@ -5,7 +5,10 @@
  */
 package upmc.pcg.ui;
 import java.util.*;
-import upmc.pcg.ui.GameUI;
+import upmc.pcg.game.*;
+
+import org.json.simple.*;
+import java.util.*;
 
 /**
  *
@@ -13,8 +16,12 @@ import upmc.pcg.ui.GameUI;
  */
 public class DeckUI {
     private final Scanner console = new Scanner(System.in);
+    private JSONObject indiv_deck;
+    private ArrayList<Deck> deck = new ArrayList();
         
-    public void PrintDeckMenu(){
+    public void PrintDeckMenu(JSONObject name_deck){
+        this.indiv_deck = name_deck;
+        System.out.println(this.indiv_deck);
         System.out.println("    (1) Add Card \n    (2) Update Card \n    (3) Remove Card \n    (4) View All card \n    (5) View a Card  \n    (6) Back ");
         ChoiceUserDeckMenu();
     }
@@ -24,7 +31,8 @@ public class DeckUI {
         
         if(choice_user.equals("1")){
             CardUI card = new CardUI();
-            card.add_card();
+            this.indiv_deck.put("carte", card.create_card());
+
         }else if(choice_user.equals("2")){
 
         }else if(choice_user.equals("3")){
