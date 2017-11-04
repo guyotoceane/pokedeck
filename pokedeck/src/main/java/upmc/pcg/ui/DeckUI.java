@@ -21,24 +21,26 @@ public class DeckUI {
         
     public void PrintDeckMenu(JSONObject name_deck){
         this.indiv_deck = name_deck;
-        System.out.println(this.indiv_deck);
         System.out.println("    (1) Add Card \n    (2) Update Card \n    (3) Remove Card \n    (4) View All card \n    (5) View a Card  \n    (6) Back ");
         ChoiceUserDeckMenu();
     }
     
      public void ChoiceUserDeckMenu(){
         String choice_user = console.nextLine();
+         CardUI card = new CardUI();
         
         if(choice_user.equals("1")){
-            CardUI card = new CardUI();
-            this.indiv_deck.put("carte", card.create_card());
-
+            JSONObject create_card = card.create_card();
+            this.indiv_deck.put(card.pokemon_card_name, create_card);
+            PrintDeckMenu(this.indiv_deck);
         }else if(choice_user.equals("2")){
 
         }else if(choice_user.equals("3")){
-
+           this.indiv_deck.remove(card.select_card());
+            PrintDeckMenu(this.indiv_deck);
         }else if(choice_user.equals("4")){
-
+            System.out.println(this.indiv_deck);
+            PrintDeckMenu(this.indiv_deck);
         }else if(choice_user.equals("5")){
 
         }else if(choice_user.equals("6")){

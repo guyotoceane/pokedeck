@@ -7,7 +7,7 @@ public class CardUI {
     private Scanner console = new Scanner(System.in);
     private String type;
     private String card_energy;
-    private String pokemon_card_name;
+    public String pokemon_card_name;
     private int pokemon_card_hp;
 
     public JSONObject create_card() {
@@ -26,7 +26,11 @@ public class CardUI {
                 return create_card();
         }
         return null;
+    }
 
+    public String select_card(){
+        System.out.println("Card name ? \n");
+        return console.nextLine();
     }
 
     private JSONObject pokemon_card() {
