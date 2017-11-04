@@ -9,8 +9,6 @@ School project (java/upmc) : Pokedeckcard game
 ## UML
 
 * For view UML diagrams open pokedeck_uml.pdf file.
-* For update UML diagrams open pokedeck.dia (and install dia software if you haven't : [download link](https://sourceforge.net/projects/dia-installer/))
-
 
 ## Report
 ### For menus
@@ -27,6 +25,6 @@ A deck can contain several cards, with the ability to display the names of the c
 ### Use Json Format
 Json is used to predict the next step which is to save the decks and their contents. 
 
-In the beginning of the project we have use ArratList, so we had work again in our method to adapt with our new format
+In the beginning of the project we have used ArratList, so we had work again in our method to adapt with our new format
 
 
