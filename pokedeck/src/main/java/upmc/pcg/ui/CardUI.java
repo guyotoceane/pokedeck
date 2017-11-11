@@ -209,7 +209,7 @@ public class CardUI {
         for (Object keyObject : save_deck.keySet()) {
             String key = (String) keyObject;
             JSONObject card_name = (JSONObject) save_deck.get(key);
-            if(card_name.get(option) != null){
+            if (card_name.get(option) != null) {
                 if (card_name.get(option).equals(choice)) {
                     System.out.println(view_card_pokemon(card_name));
                     System.out.println("-------------------------");
@@ -219,7 +219,6 @@ public class CardUI {
                 System.out.println("Bad Selection");
                 search_card(deck);
             }
-
 
 
         }

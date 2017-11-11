@@ -40,10 +40,6 @@ public class DeckUI {
                 System.out.println(this.indiv_deck.get(energy));
                 this.indiv_deck.remove(energy);
                 this.indiv_deck.put(energy, card_energy + 1);
-
-//                System.out.println(this.indiv_deck);
-
-
             } else {
                 this.indiv_deck.put(cardUI.pokemon_card_name, create_card);
             }

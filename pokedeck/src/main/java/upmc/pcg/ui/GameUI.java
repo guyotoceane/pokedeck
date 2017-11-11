@@ -15,6 +15,7 @@
 package upmc.pcg.ui;
 
 import java.util.*;
+
 import upmc.pcg.game.*;
 
 import org.json.simple.*;
@@ -33,7 +34,7 @@ public class GameUI {
         ArrayList<String> names = ask_players_names();
 
         PrintMenu();
-        
+
         game.initialize(names);
         game.play();
     }
@@ -43,36 +44,34 @@ public class GameUI {
     }
 
     private void print_welcome_msg() {
-          System.out.println("Hello, welcome ! ");
+        System.out.println("Hello, welcome ! ");
     }
 
-    
-    
-    
-/*Menu*/
-    public void PrintMenu(){
+
+    /*Menu*/
+    public void PrintMenu() {
         System.out.println("(1) Create a deck \n(2) View names of all decks \n(3) View a deck \n(4) Leave ");
         ChoiceUserMenu();
     }
-    
-    public void ChoiceUserMenu(){
+
+    public void ChoiceUserMenu() {
         String choice_user = console.nextLine();
         CardUI card = new CardUI();
 
-        switch (choice_user){
-            case "1" :
+        switch (choice_user) {
+            case "1":
                 CreateDeck();
                 break;
-            case "2" :
+            case "2":
                 ViewAllNamesDecks();
                 break;
-            case "3" :
+            case "3":
                 ViewDeck();
                 break;
-            case "4" :
+            case "4":
                 System.exit(0);
                 break;
-            case "5" :
+            case "5":
                 card.create_card();
                 break;
             default:
@@ -82,11 +81,11 @@ public class GameUI {
 
         }
     }
-    
-    
-//Method for Menu    
-    public void CreateDeck(){
-        System.out.println("Deck's name ? ");     
+
+
+    //Method for Menu
+    public void CreateDeck() {
+        System.out.println("Deck's name ? ");
         String name_deck = console.nextLine();
         Deck deck = new Deck(name_deck);
         deck.new_deck();
@@ -94,31 +93,30 @@ public class GameUI {
         System.out.println(deck.ViewNameDeck() + " was created");
         PrintMenu();
     }
-    
-    public void ViewAllNamesDecks(){
 
-        if(list_decks.isEmpty()){
+    public void ViewAllNamesDecks() {
+
+        if (list_decks.isEmpty()) {
             System.out.println("0 deck create");
-        }else{
+        } else {
             System.out.println("List of names of all list_decks : ");
 
-            for (Object keyObject : list_decks.keySet())
-            {
-                String key = (String)keyObject;
-                System.out.print("* " + key +"\n");
+            for (Object keyObject : list_decks.keySet()) {
+                String key = (String) keyObject;
+                System.out.print("* " + key + "\n");
             }
 
         }
         PrintMenu();
     }
-    
-    public void ViewDeck(){
+
+    public void ViewDeck() {
         System.out.println("What deck you want to see? ");
         JSONObject name_deck = (JSONObject) list_decks.get(console.nextLine());
-        if(name_deck != null){
+        if (name_deck != null) {
             DeckUI deck_ui = new DeckUI();
             deck_ui.PrintDeckMenu(name_deck);
-        } else{
+        } else {
             System.out.println("Deck doesn't exist ...");
             PrintMenu();
         }
