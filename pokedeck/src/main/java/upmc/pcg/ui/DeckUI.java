@@ -8,11 +8,8 @@ package upmc.pcg.ui;
 import java.util.*;
 
 //import com.sun.java.util.jar.pack.Instruction;
-import upmc.pcg.game.*;
 
 import org.json.simple.*;
-
-import java.util.*;
 
 /**
  * @author jerom
@@ -21,14 +18,14 @@ public class DeckUI {
     private final Scanner console = new Scanner(System.in);
     private JSONObject indiv_deck;
 
-    public void PrintDeckMenu(JSONObject name_deck) {
+    public void print_deck_menu(JSONObject name_deck) {
         this.indiv_deck = name_deck;
         System.out.println("(1) Add Card \n(2) Update Card \n(3) Remove Card \n(4) View All card \n(5) Search a Card  \n(6) Back ");
-        ChoiceUserDeckMenu();
+        choice_user_deck_menu();
     }
 
     // TODO Create intermediate method
-    public void ChoiceUserDeckMenu() {
+    public void choice_user_deck_menu() {
         String choice_user = console.nextLine();
         CardUI cardUI = new CardUI();
 
@@ -44,12 +41,12 @@ public class DeckUI {
                 this.indiv_deck.put(cardUI.pokemon_card_name, create_card);
             }
 
-            PrintDeckMenu(this.indiv_deck);
+            print_deck_menu(this.indiv_deck);
         } else if (choice_user.equals("2")) {
             cardUI.update_card(this.indiv_deck);
         } else if (choice_user.equals("3")) {
             this.indiv_deck.remove(cardUI.select_card());
-            PrintDeckMenu(this.indiv_deck);
+            print_deck_menu(this.indiv_deck);
         } else if (choice_user.equals("4")) {
 
             System.out.println("Energy cards :");
@@ -59,17 +56,17 @@ public class DeckUI {
             cardUI.view_pokemon_cards(this.indiv_deck);
 
 
-            PrintDeckMenu(this.indiv_deck);
+            print_deck_menu(this.indiv_deck);
 
         } else if (choice_user.equals("5")) {
             cardUI.search_card(this.indiv_deck);
 
         } else if (choice_user.equals("6")) {
             GameUI game_ui = new GameUI();
-            game_ui.PrintMenu();
+            game_ui.print_menu();
         } else {
             System.out.println("Bad Selection ");
-            PrintDeckMenu(this.indiv_deck);
+            print_deck_menu(this.indiv_deck);
         }
     }
 }

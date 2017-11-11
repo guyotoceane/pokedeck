@@ -33,7 +33,7 @@ public class GameUI {
         print_welcome_msg();
         ArrayList<String> names = ask_players_names();
 
-        PrintMenu();
+        print_menu();
 
         game.initialize(names);
         game.play();
@@ -49,24 +49,24 @@ public class GameUI {
 
 
     /*Menu*/
-    public void PrintMenu() {
+    public void print_menu() {
         System.out.println("(1) Create a deck \n(2) View names of all decks \n(3) View a deck \n(4) Leave ");
-        ChoiceUserMenu();
+        choice_user_menu();
     }
 
-    public void ChoiceUserMenu() {
+    public void choice_user_menu() {
         String choice_user = console.nextLine();
         CardUI card = new CardUI();
 
         switch (choice_user) {
             case "1":
-                CreateDeck();
+                create_deck();
                 break;
             case "2":
-                ViewAllNamesDecks();
+                view_all_names_decks();
                 break;
             case "3":
-                ViewDeck();
+                view_deck();
                 break;
             case "4":
                 System.exit(0);
@@ -76,7 +76,7 @@ public class GameUI {
                 break;
             default:
                 System.out.println("Bad Selection ");
-                PrintMenu();
+                print_menu();
                 break;
 
         }
@@ -84,17 +84,17 @@ public class GameUI {
 
 
     //Method for Menu
-    public void CreateDeck() {
+    public void create_deck() {
         System.out.println("Deck's name ? ");
         String name_deck = console.nextLine();
         Deck deck = new Deck(name_deck);
         deck.new_deck();
 //        this.list_decks.put("deck_name", deck);  //create a deck in names_decks
-        System.out.println(deck.ViewNameDeck() + " was created");
-        PrintMenu();
+        System.out.println(deck.view_name_deck() + " was created");
+        print_menu();
     }
 
-    public void ViewAllNamesDecks() {
+    public void view_all_names_decks() {
 
         if (list_decks.isEmpty()) {
             System.out.println("0 deck create");
@@ -107,18 +107,18 @@ public class GameUI {
             }
 
         }
-        PrintMenu();
+        print_menu();
     }
 
-    public void ViewDeck() {
+    public void view_deck() {
         System.out.println("What deck you want to see? ");
         JSONObject name_deck = (JSONObject) list_decks.get(console.nextLine());
         if (name_deck != null) {
             DeckUI deck_ui = new DeckUI();
-            deck_ui.PrintDeckMenu(name_deck);
+            deck_ui.print_deck_menu(name_deck);
         } else {
             System.out.println("Deck doesn't exist ...");
-            PrintMenu();
+            print_menu();
         }
 
 

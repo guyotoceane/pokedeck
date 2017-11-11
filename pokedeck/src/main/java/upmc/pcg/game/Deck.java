@@ -36,7 +36,7 @@ public class Deck {
     }
     
     
-    public String ViewNameDeck(){
+    public String view_name_deck(){
         return this.name_deck;
     }
     

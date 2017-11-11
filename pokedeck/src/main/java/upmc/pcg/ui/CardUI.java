@@ -85,7 +85,7 @@ public class CardUI {
                 update_option(card, deck);
                 break;
             case "4":
-                deckUi.PrintDeckMenu(deck);
+                deckUi.print_deck_menu(deck);
             default:
                 System.out.println("Bad Selection !");
                 update_option(card, deck);
