@@ -26,7 +26,7 @@ public class Card {
         card.put("name", this.card_name);
         card.put("hp", this.hp);
         card.put("pokemon_type", PokemonType.pokemon_type);
-        card.put("color", PokemonType.color);
+//        card.put("color", PokemonType.color);
     }
 
 }

@@ -4,7 +4,7 @@ public class PokemonType {
     public static Color color;
     public static String pokemon_type;
 
-    public void view_type_color(String type) {
+    public Color view_type_color(String type) {
         pokemon_type = type;
         switch (pokemon_type) {
             case "Grass":
@@ -28,5 +28,6 @@ public class PokemonType {
             default: color = null;
         }
 
+        return color;
     }
 }

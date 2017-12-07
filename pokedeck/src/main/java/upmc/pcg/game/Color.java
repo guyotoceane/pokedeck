@@ -10,4 +10,8 @@ public class Color {
     public String toString() {
         return ""+this.color+"";
     }
+
+    public int view_color(){
+        return this.color;
+    }
 }

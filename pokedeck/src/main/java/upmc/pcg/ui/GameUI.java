@@ -14,6 +14,7 @@
 
 package upmc.pcg.ui;
 
+import java.io.IOException;
 import java.util.*;
 
 import upmc.pcg.game.*;
@@ -51,10 +52,14 @@ public class GameUI {
     /*Menu*/
     public void print_menu() {
         System.out.println("(1) Create a deck \n(2) View names of all decks \n(3) View a deck \n(4) Leave ");
-        choice_user_menu();
+        try {
+            choice_user_menu();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void choice_user_menu() {
+    public void choice_user_menu() throws IOException {
         String choice_user = console.nextLine();
         CardUI card = new CardUI();
 
@@ -69,6 +74,8 @@ public class GameUI {
                 view_deck();
                 break;
             case "4":
+                final Serialization serialization = new Serialization(GameUI.list_decks);
+                serialization.save();
                 System.exit(0);
                 break;
             case "5":

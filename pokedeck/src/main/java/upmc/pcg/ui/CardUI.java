@@ -97,7 +97,13 @@ public class CardUI {
     }
 
     public String view_card_pokemon(JSONObject card) {
-        return "\033[" + card.get("color") + "m" + "Pokemon Name : " + card.get("name") + "\nhp : " + card.get("hp") + "\nPokemon Type : " + card.get("pokemon_type") + "\033[00m";
+        PokemonType pokemon = new PokemonType();
+
+        String pokemon_type= (String) card.get("pokemon_type");
+        Color color = pokemon.view_type_color(pokemon_type);
+
+        return "\033[" + color  + "m" + "Pokemon Name : " + card.get("name") + "\nhp : " + card.get("hp") + "\nPokemon Type : " + card.get("pokemon_type") + "\033[00m";
+//        return "Pokemon Name : " + card.get("name") + "\nhp : " + card.get("hp") + "\nPokemon Type : " + card.get("pokemon_type");
     }
 
     private JSONObject pokemon_card() {
