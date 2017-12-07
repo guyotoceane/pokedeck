@@ -10,27 +10,27 @@ public class CardUI {
     private int pokemon_card_hp;
     private Card card = new Card();
 
-    public void add_card() {
+    public void AddCard() {
+        
         System.out.println("**Add a new Card**");
         System.out.println("Type of card : \n(1) Pokemon Card \n(2) Energy Card");
         switch (console.nextLine()) {
             case "1":
                 type = "Pokemon Card";
-                pokemon_card();
+                System.out.prinlnPokemonCard();
                 break;
             case "2":
                 type = "Energy Card";
-                energy_card();
+                EnergyCard();
                 break;
             default:
                 System.out.println("Bad Selection");
-                add_card();
+                AddCard();
                 break;
         }
-
     }
 
-    private void pokemon_card() {
+    private void PokemonCard() {
         energy_type();
         System.out.println("Pokemon name :");
         pokemon_card_name = console.nextLine();
@@ -38,9 +38,13 @@ public class CardUI {
         pokemon_card_hp = Integer.parseInt(console.nextLine());
         System.out.println(card.pokemon(pokemon_card_name, pokemon_card_hp, card_energy));
         //TODO Jérome Add card in the deck
+        
+     
+        
+        
     }
 
-    private void energy_card() {
+    private void EnergyCard() {
         energy_type();
         //TODO Jérome Increment +1 with this type of card in the deck
     }

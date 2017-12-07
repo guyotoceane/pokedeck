@@ -19,10 +19,14 @@ public class Card {
 //                break;
 //        }
 //    }
+    
 
+    
     public String pokemon(String pokemon_name, int hp, String type){
         this.pokemon_type = new PokemonType();
         this.pokemon_type.view_type_color(type);
+        this.hp = hp;
+        
         return PokemonType.color + "Pokemon Name : "+pokemon_name + "\nhp : " + hp + "\nPokemon Type : " + PokemonType.pokemon_type;
 
     }

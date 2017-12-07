@@ -57,7 +57,7 @@ public class GameUI {
     public void ChoiceUserMenu(){
         String choice_user = console.nextLine();
         CardUI card = new CardUI();
-
+            
         switch (choice_user){
             case "1" :
                 CreateDeck();
@@ -72,7 +72,7 @@ public class GameUI {
                 System.exit(0);
                 break;
             case "5" :
-                card.add_card();
+                card.AddCard();
                 break;
             default:
                 System.out.println("Bad Selection ");
@@ -89,7 +89,7 @@ public class GameUI {
         String name_deck = console.nextLine();
         
         this.names_decks.add(new Deck(name_deck));  //create a deck in names_decks 
-        System.out.println(names_decks.get(0).ViewNameDeck() + " was created");
+        System.out.println(names_decks.get(names_decks.size()-1).ViewNameDeck() + " was created");
         PrintMenu();
     }
     

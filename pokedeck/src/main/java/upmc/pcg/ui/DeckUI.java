@@ -5,6 +5,7 @@
  */
 package upmc.pcg.ui;
 import java.util.*;
+import upmc.pcg.game.Deck;
 import upmc.pcg.ui.GameUI;
 
 /**
@@ -24,11 +25,16 @@ public class DeckUI {
         
         if(choice_user.equals("1")){
             CardUI card = new CardUI();
-            card.add_card();
+            card.AddCard();
+             
+            
         }else if(choice_user.equals("2")){
 
         }else if(choice_user.equals("3")){
-
+            System.out.println("Choose a card to delete");
+            String choice_card = console.nextLine();
+            
+            
         }else if(choice_user.equals("4")){
 
         }else if(choice_user.equals("5")){
