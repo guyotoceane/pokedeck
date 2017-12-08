@@ -1,33 +1,32 @@
 package upmc.pcg.game;
 
+import org.json.simple.JSONObject;
+
 public class Card {
     private String card_name;
     private int hp;
     private PokemonType pokemon_type;
-    private String card_type;
+    private String type;
+    private JSONObject card = new JSONObject();
 
-//    public Card(int type) {
-//        switch (type) {
-//            case 1:
-//                this.card_type = "pokemon";
-//                break;
-//            case 2:
-//                this.card_type = "energy";
-//                break;
-//            default:
-//                this.card_type = "pokemon";
-//                break;
-//        }
-//    }
-    
-
-    
-    public String pokemon(String pokemon_name, int hp, String type){
-        this.pokemon_type = new PokemonType();
-        this.pokemon_type.view_type_color(type);
+    public Card(String pokemon_name, int hp, String type) {
+        this.card_name = pokemon_name;
         this.hp = hp;
-        
-        return PokemonType.color + "Pokemon Name : "+pokemon_name + "\nhp : " + hp + "\nPokemon Type : " + PokemonType.pokemon_type;
-
+        this.type = type;
     }
+
+    public JSONObject pokemon(){
+        this.pokemon_type = new PokemonType();
+        this.pokemon_type.view_type_color(this.type);
+        pokemon_card();
+        return this.card;
+    }
+
+    public void pokemon_card() {
+        card.put("name", this.card_name);
+        card.put("hp", this.hp);
+        card.put("pokemon_type", PokemonType.pokemon_type);
+//        card.put("color", PokemonType.color);
+    }
+
 }

@@ -14,13 +14,22 @@
 
 package upmc.pcg;
 
+import upmc.pcg.game.Serialization;
 import upmc.pcg.ui.GameUI;
 
-public class Pokedeck
-{
-  public static void main(String[] args)
-  {
-    GameUI game_ui = new GameUI();
-    game_ui.start();
-  }
+import java.io.IOException;
+
+public class Pokedeck {
+    public static void main(String[] args) throws IOException {
+
+        final Serialization serialization = new Serialization(GameUI.list_decks);
+        try {
+            serialization.open();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        GameUI game_ui = new GameUI();
+        game_ui.start();
+    }
 }

@@ -14,20 +14,28 @@
 
 package upmc.pcg.ui;
 
+import java.io.IOException;
 import java.util.*;
+
 import upmc.pcg.game.*;
+
+import org.json.simple.*;
+
+
+import java.util.ArrayList;
+
 
 public class GameUI {
     private final Game game = new Game();
     private final Scanner console = new Scanner(System.in);
-    private ArrayList<Deck> names_decks = new ArrayList<>();
+    public static JSONObject list_decks = new JSONObject();
 
     public void start() {
         print_welcome_msg();
         ArrayList<String> names = ask_players_names();
 
-        PrintMenu();
-        
+        print_menu();
+
         game.initialize(names);
         game.play();
     }
@@ -37,89 +45,90 @@ public class GameUI {
     }
 
     private void print_welcome_msg() {
-          System.out.println("Hello, welcome ! ");
+        System.out.println("Hello, welcome ! ");
     }
 
-    
-    
-    
-/*Menu*/
-    public void PrintMenu(){
+
+    /*Menu*/
+    public void print_menu() {
         System.out.println("(1) Create a deck \n(2) View names of all decks \n(3) View a deck \n(4) Leave ");
-        
-        
-        //provisoire
-        System.out.println("Menu provisoire pour les tests des cartes");
-        System.out.println("(5) Add a card \n(6) Suppr a card \n");
-        ChoiceUserMenu();
+        try {
+            choice_user_menu();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    
-    public void ChoiceUserMenu(){
+
+    public void choice_user_menu() throws IOException {
         String choice_user = console.nextLine();
         CardUI card = new CardUI();
-            
-        switch (choice_user){
-            case "1" :
-                CreateDeck();
+
+        switch (choice_user) {
+            case "1":
+                create_deck();
                 break;
-            case "2" :
-                ViewAllNamesDecks();
+            case "2":
+                view_all_names_decks();
                 break;
-            case "3" :
-                ViewDeck();
+            case "3":
+                view_deck();
                 break;
-            case "4" :
+            case "4":
+                final Serialization serialization = new Serialization(GameUI.list_decks);
+                serialization.save();
                 System.exit(0);
                 break;
-            case "5" :
-                card.AddCard();
+            case "5":
+                card.create_card();
                 break;
             default:
                 System.out.println("Bad Selection ");
-                ChoiceUserMenu();
+                print_menu();
                 break;
 
         }
     }
-    
-    
-//Method for Menu    
-    public void CreateDeck(){
-        System.out.println("Deck's name ? ");     
-        String name_deck = console.nextLine();
-        
-        this.names_decks.add(new Deck(name_deck));  //create a deck in names_decks 
-        System.out.println(names_decks.get(names_decks.size()-1).ViewNameDeck() + " was created");
-        PrintMenu();
-    }
-    
-    public void ViewAllNamesDecks(){
 
-        if(names_decks.isEmpty()){
-            System.out.println("0 deck create");
-        }else{
-            System.out.println("List of names of all decks : ");
-            for(int i=0; i<names_decks.size(); i++){
-                System.out.print(" " + names_decks.get(i).ViewNameDeck() +",");
-            }
-            System.out.println(" ");
-        }
-        
-        PrintMenu();
-    }
-    
-    public void ViewDeck(){
-        System.out.println("What deck you want to see? ");
+
+    //Method for Menu
+    public void create_deck() {
+        System.out.println("Deck's name ? ");
         String name_deck = console.nextLine();
-        
-        for(int i=0; i<names_decks.size(); i++){
-            if(names_decks.get(i).ViewNameDeck().equals(name_deck)){
-                DeckUI deck_ui = new DeckUI();
-                deck_ui.PrintDeckMenu();
+        Deck deck = new Deck(name_deck);
+        deck.new_deck();
+//        this.list_decks.put("deck_name", deck);  //create a deck in names_decks
+        System.out.println(deck.view_name_deck() + " was created");
+        print_menu();
+    }
+
+    public void view_all_names_decks() {
+
+        if (list_decks.isEmpty()) {
+            System.out.println("0 deck create");
+        } else {
+            System.out.println("List of names of all list_decks : ");
+
+            for (Object keyObject : list_decks.keySet()) {
+                String key = (String) keyObject;
+                System.out.print("* " + key + "\n");
             }
+
         }
-        
-        
+        print_menu();
+    }
+
+    public void view_deck() {
+        System.out.println("What deck you want to see? ");
+        JSONObject name_deck = (JSONObject) list_decks.get(console.nextLine());
+        if (name_deck != null) {
+            DeckUI deck_ui = new DeckUI();
+            deck_ui.print_deck_menu(name_deck);
+        } else {
+            System.out.println("Deck doesn't exist ...");
+            print_menu();
+        }
+
+
         //Menu deck 
         //Search Card ...
     }

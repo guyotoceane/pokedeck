@@ -8,6 +8,10 @@ public class Color {
     }
 
     public String toString() {
-        return "\033[" + this.color + "m";
+        return ""+this.color+"";
+    }
+
+    public int view_color(){
+        return this.color;
     }
 }
