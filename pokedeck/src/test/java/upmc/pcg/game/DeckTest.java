@@ -25,6 +25,6 @@ public class DeckTest extends TestCase {
     public void deckTest(){
         Deck deck = new Deck("testunnom");
         assertNotNull(deck);
-        assertTrue("testunnom"==deck.ViewNameDeck());
+        assertTrue("testunnom"==deck.view_name_deck());
     }
 }
